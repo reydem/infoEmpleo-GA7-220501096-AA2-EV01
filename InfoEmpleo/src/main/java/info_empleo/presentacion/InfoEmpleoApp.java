@@ -63,14 +63,15 @@ public class InfoEmpleoApp {
                 System.out.println("--- Agregar Empleado ---");
                 System.out.print("Nombre: ");
                 String nombre = consola.nextLine();
-                System.out.print("Apellido: ");
-                String apellido = consola.nextLine();
-                System.out.print("Membresía: ");
-                int membresia = Integer.parseInt(consola.nextLine());
-                // Se pasan valores por defecto para descripcion y salario
-                var empleado = new InfoEmpleo(nombre, apellido, membresia, "", 0.0);
+                System.out.print("Empresa: ");
+                String empresa = consola.nextLine();
+                System.out.print("Descripción: ");
+                String descripcion = consola.nextLine();
+                System.out.print("Salario: ");
+                double salario = Double.parseDouble(consola.nextLine());
+                var empleado = new InfoEmpleo(nombre, empresa, descripcion, salario);
                 boolean agregado = infoEmpleoDAO.agregarInfoEmpleo(empleado);
-                if(agregado)
+                if (agregado)
                     System.out.println("Empleado agregado: " + empleado);
                 else
                     System.out.println("Empleado NO agregado: " + empleado);
@@ -81,12 +82,13 @@ public class InfoEmpleoApp {
                 int idEmpleado = Integer.parseInt(consola.nextLine());
                 System.out.print("Nombre: ");
                 String nombre = consola.nextLine();
-                System.out.print("Apellido: ");
-                String apellido = consola.nextLine();
-                System.out.print("Membresía: ");
-                int membresia = Integer.parseInt(consola.nextLine());
-                // Se pasan valores por defecto para descripcion y salario
-                var empleado = new InfoEmpleo(idEmpleado, nombre, apellido, membresia, "", 0.0);
+                System.out.print("Empresa: ");
+                String empresa = consola.nextLine();
+                System.out.print("Descripción: ");
+                String descripcion = consola.nextLine();
+                System.out.print("Salario: ");
+                double salario = Double.parseDouble(consola.nextLine());
+                var empleado = new InfoEmpleo(idEmpleado, nombre, empresa, descripcion, salario);
                 boolean modificado = infoEmpleoDAO.modificarInfoEmpleo(empleado);
                 if(modificado)
                     System.out.println("Empleado modificado: " + empleado);

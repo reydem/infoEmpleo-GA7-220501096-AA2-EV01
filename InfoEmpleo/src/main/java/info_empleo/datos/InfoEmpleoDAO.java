@@ -1,3 +1,4 @@
+// /webapps/infoEmpleo-GA7-220501096-AA2-EV01/InfoEmpleo/src/main/java/info_empleo/datos/InfoEmpleoDAO.java
 package info_empleo.datos;
 
 import info_empleo.dominio.InfoEmpleo;
@@ -24,6 +25,7 @@ public class InfoEmpleoDAO implements IInfoEmpleoDAO {
                 var infoEmpleo = new InfoEmpleo();
                 infoEmpleo.setId(rs.getInt("id"));
                 infoEmpleo.setNombre(rs.getString("nombre"));
+                infoEmpleo.setEmpresa(rs.getString("empresa")); // se asigna el valor de empresa
                 infoEmpleo.setDescripcion(rs.getString("descripcion"));
                 infoEmpleo.setSalario(rs.getDouble("salario"));
                 infoEmpleos.add(infoEmpleo);
@@ -52,6 +54,7 @@ public class InfoEmpleoDAO implements IInfoEmpleoDAO {
             rs = ps.executeQuery();
             if (rs.next()) {
                 infoEmpleo.setNombre(rs.getString("nombre"));
+                infoEmpleo.setEmpresa(rs.getString("empresa")); // se asigna el valor de empresa
                 infoEmpleo.setDescripcion(rs.getString("descripcion"));
                 infoEmpleo.setSalario(rs.getDouble("salario"));
                 return true;
@@ -72,12 +75,13 @@ public class InfoEmpleoDAO implements IInfoEmpleoDAO {
     public boolean agregarInfoEmpleo(InfoEmpleo infoEmpleo) {
         PreparedStatement ps;
         Connection con = getConexion();
-        String sql = "INSERT INTO info_empleo(nombre, descripcion, salario) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO info_empleo(nombre, empresa, descripcion, salario) VALUES(?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, infoEmpleo.getNombre());
-            ps.setString(2, infoEmpleo.getDescripcion());
-            ps.setDouble(3, infoEmpleo.getSalario());
+            ps.setString(2, infoEmpleo.getEmpresa());
+            ps.setString(3, infoEmpleo.getDescripcion());
+            ps.setDouble(4, infoEmpleo.getSalario());
             ps.execute();
             return true;
         } catch (Exception e) {
@@ -96,13 +100,14 @@ public class InfoEmpleoDAO implements IInfoEmpleoDAO {
     public boolean modificarInfoEmpleo(InfoEmpleo infoEmpleo) {
         PreparedStatement ps;
         Connection con = getConexion();
-        String sql = "UPDATE info_empleo SET nombre=?, descripcion=?, salario=? WHERE id = ?";
+        String sql = "UPDATE info_empleo SET nombre=?, empresa=?, descripcion=?, salario=? WHERE id = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, infoEmpleo.getNombre());
-            ps.setString(2, infoEmpleo.getDescripcion());
-            ps.setDouble(3, infoEmpleo.getSalario());
-            ps.setInt(4, infoEmpleo.getId());
+            ps.setString(2, infoEmpleo.getEmpresa());
+            ps.setString(3, infoEmpleo.getDescripcion());
+            ps.setDouble(4, infoEmpleo.getSalario());
+            ps.setInt(5, infoEmpleo.getId());
             ps.execute();
             return true;
         } catch (Exception e) {
