@@ -25,7 +25,7 @@ public class InfoEmpleoDAO implements IInfoEmpleoDAO {
                 var infoEmpleo = new InfoEmpleo();
                 infoEmpleo.setId(rs.getInt("id"));
                 infoEmpleo.setNombre(rs.getString("nombre"));
-                infoEmpleo.setEmpresa(rs.getString("empresa")); // se asigna el valor de empresa
+                infoEmpleo.setEmpresa(rs.getString("empresa"));
                 infoEmpleo.setDescripcion(rs.getString("descripcion"));
                 infoEmpleo.setSalario(rs.getDouble("salario"));
                 infoEmpleos.add(infoEmpleo);
@@ -54,7 +54,7 @@ public class InfoEmpleoDAO implements IInfoEmpleoDAO {
             rs = ps.executeQuery();
             if (rs.next()) {
                 infoEmpleo.setNombre(rs.getString("nombre"));
-                infoEmpleo.setEmpresa(rs.getString("empresa")); // se asigna el valor de empresa
+                infoEmpleo.setEmpresa(rs.getString("empresa")); 
                 infoEmpleo.setDescripcion(rs.getString("descripcion"));
                 infoEmpleo.setSalario(rs.getDouble("salario"));
                 return true;

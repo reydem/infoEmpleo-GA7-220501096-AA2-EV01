@@ -6,7 +6,7 @@ import java.util.Objects;
 public class InfoEmpleo {
     private int id;
     private String nombre;
-    private String empresa;      // Se usa en lugar de membresia
+    private String empresa;      
     private String descripcion;
     private double salario;
 
